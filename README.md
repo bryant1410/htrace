@@ -115,7 +115,7 @@ not tracing, but instead it will return a `NullSpan`, which does
 nothing on any of its method calls. The takeaway here is you can call
 methods on the `currentTrace()` without fear of NullPointerExceptions.
 
-###Samplers
+### Samplers
 `Sampler` is an interface that defines one function:
 
 ````java
@@ -135,7 +135,7 @@ HTrace includes  a sampler that always returns true, a
 sampler that always returns false and a sampler returns true some
 percentage of the time (you pass in the percentage as a decimal at construction).
 
-####Trace.startSpan()
+#### Trace.startSpan()
 There is a single method to create and start spans: `startSpan()`.
 For the `startSpan()` methods that do not take an explicit Sampler, the
 default Sampler is used.  The default sampler returns true if and only
@@ -172,7 +172,7 @@ receiver of the RPC will check the message for the additional two
 will be used for the new span.  `Span.child()` simply returns a span
 that is a child of `this`.
 
-###Span Receivers
+### Span Receivers
 In order to use the tracing information consisting of spans,
 you need an implementation of `SpanReceiver` interface which collects spans
 and typically writes it to files or databases or collector services.
@@ -199,7 +199,7 @@ by calling `Trace.addReceiver` method.
     Trace.addReceiver(impl);
 ````
 
-####Zipkin
+#### Zipkin
 htrace-zipkin provides the `SpanReceiver` implementation
 which sends spans to [Zipkin](https://github.com/twitter/zipkin) collector.
 You can build the uber-jar (htrace-zipkin-*-jar-withdependency.jar) for manual
@@ -209,7 +209,7 @@ htrace-core and its dependencies.
     $ cd htrace-zipkin
     $ mvn compile assembly:single
 
-####HBase Receiver
+#### HBase Receiver
 See htrace-hbase for an Span Receiver implementation that writes HBase.
 Also bundled is a simple Span Viewer.
 
